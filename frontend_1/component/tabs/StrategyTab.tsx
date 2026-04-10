@@ -68,7 +68,7 @@ export default function StrategyTab({ data }: Props) {
 
       {/* METRICS */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10 }}>
-        <MetricCard label="Break-even" value={isHold ? '—' : formatNumber(data.break_even)} />
+        <MetricCard label="Break-even" value={isHold ? '—' : formatNumber(data.break_even ?? undefined)} />
         <MetricCard label="Max Profit" value={isHold ? '—' : formatCurrency(data.max_profit)} />
         <MetricCard label="Max Loss" value={isHold ? '—' : formatCurrency(data.max_loss)} />
       </div>
