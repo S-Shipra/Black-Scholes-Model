@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 
-from config import HV_WINDOW
+from backend.config import HV_WINDOW
 from utils.tool_registry import ToolRegistry
 
 logger = logging.getLogger(__name__)
