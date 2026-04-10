@@ -62,7 +62,7 @@ export default function StrategyTab({ data }: Props) {
           {isHold ? 'No Trade Opportunity' : data.strategy}
         </p>
         <p style={{ fontSize: 12, marginTop: 6 }}>
-          Risk: <b>{data.risk_level}</b> | Confidence: <b>{formatPercent(data.confidence)}</b>
+          Risk: <b>{data.risk_level}</b> | Confidence: <b>{formatPercent(data.confidence ?? undefined)}</b>
         </p>
       </div>
 
