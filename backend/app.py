@@ -2,8 +2,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from backend.agents.orchestrator import Orchestrator
-from backend.agents.backtesting import _run_backtest
+from agents.orchestrator import Orchestrator
+from agents.backtesting import _run_backtest
 
 app = FastAPI(title="QuantTrade API")
 
