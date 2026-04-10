@@ -23,8 +23,9 @@ const formatNumber = (val: number | null | undefined) => {
   return `$${val.toFixed(2)}`
 }
 
-const formatPercent = (val?: number) => {
+const formatPercent = (val?: number | string | null) => {
   if (val === undefined || val === null) return '—'
+  if (typeof val === 'string') return val
   return (val * 100).toFixed(1) + '%'
 }
 
