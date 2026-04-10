@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Quantum Terminal Color System ─── */
+:root {
+  /* Backgrounds */
+  --qt-bg:          #07090F;
+  --qt-bg-bar:      #090D18;
+  --qt-bg-card:     #0E1320;
+  --qt-bg-input:    #111827;
+  --qt-bg-hover:    #111D2E;
+
+  /* Accent colors */
+  --qt-cyan:        #00E5B4;
+  --qt-cyan-dim:    rgba(0, 229, 180, 0.08);
+  --qt-cyan-border: rgba(0, 229, 180, 0.22);
+  --qt-amber:       #F5A623;
+  --qt-amber-dim:   rgba(245, 166, 35, 0.10);
+  --qt-amber-border:rgba(245, 166, 35, 0.28);
+  --qt-red:         #FF4560;
+  --qt-red-dim:     rgba(255, 69, 96, 0.10);
+  --qt-red-border:  rgba(255, 69, 96, 0.28);
+
+  /* Text */
+--qt-text:        #F0F6FF;
+--qt-text-sub:    #A8BFCF;
+--qt-muted:       #6B8CAE;
+
+  /* Borders */
+  --qt-border:      #0E1A28;
+  --qt-border-mid:  #162030;
+
+  /* Sidebar active tab indicator */
+  --qt-sidebar-w:   52px;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  height: 100%;
+  background-color: var(--qt-bg);
+  color: var(--qt-text);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar        { width: 3px; height: 3px; }
+::-webkit-scrollbar-track  { background: var(--qt-bg); }
+::-webkit-scrollbar-thumb  { background: var(--qt-border-mid); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--qt-muted); }
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 229, 180, 0.18);
+  color: var(--qt-cyan);
+}
+
+/* ─── Blinking cursor animation ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Fade-in for page transitions ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Pulse glow for live indicator ─── */
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 229, 180, 0.4); }
+  50%       { opacity: 0.6; box-shadow: 0 0 0 4px rgba(0, 229, 180, 0); }
+}
+
+/* ─── Utility classes ─── */
+.qt-fade-up {
+  animation: fadeUp 0.4s ease forwards;
+}
+
+.qt-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+.qt-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--qt-cyan);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.qt-card {
+  background: var(--qt-bg-card);
+  border: 0.5px solid var(--qt-border);
+  border-radius: 8px;
+}
+
+.qt-label {
+  font-size: 10px;
+  color: var(--qt-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.qt-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ─── Recharts dark theme overrides ─── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--qt-border) !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--qt-bg-card) !important;
+  border: 0.5px solid var(--qt-border-mid) !important;
+  border-radius: 6px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  color: var(--qt-text) !important;
+}
+
+.recharts-text {
+  fill: var(--qt-muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 10px !important;
+}
