@@ -24,8 +24,7 @@ from __future__ import annotations
 
 import logging
 from typing import Any
-
-from backend.utils.tool_registry import ToolRegistry
+from utils.tool_registry import ToolRegistry
 import agents.market_data  as _market_data
 import agents.pricing      as _pricing
 import agents.volatility   as _volatility
