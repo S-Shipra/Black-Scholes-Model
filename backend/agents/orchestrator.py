@@ -24,15 +24,16 @@ from __future__ import annotations
 
 import logging
 from typing import Any
-from utils.tool_registry import ToolRegistry
-import agents.market_data  as _market_data
-import agents.pricing      as _pricing
-import agents.volatility   as _volatility
-import agents.mispricing   as _mispricing
-import agents.strategy     as _strategy
-import agents.risk         as _risk
-import agents.explanation  as _explanation
-import agents.direction    as _direction          # ← NEW
+
+from backend.utils.tool_registry import ToolRegistry
+import backend.agents.market_data  as _market_data
+import backend.agents.pricing      as _pricing
+import backend.agents.volatility   as _volatility
+import backend.agents.mispricing   as _mispricing
+import backend.agents.strategy     as _strategy
+import backend.agents.risk         as _risk
+import backend.agents.explanation  as _explanation
+import backend.agents.direction    as _direction# ← NEW
 
 logger = logging.getLogger(__name__)
 
