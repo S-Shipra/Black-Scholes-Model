@@ -1,8 +1,5 @@
 # Black-Scholes-Model
 
-App deployed at 
-https://black-scholes-model-kgwx.vercel.app/
-
 # Agentic Options Trading Analyst
 
 A production-grade multi-agent system that analyzes stock options using the Black-Scholes model. Fetches live market data, computes theoretical prices, detects mispricing, suggests trade strategies, backtests them, and explains everything in plain English.
