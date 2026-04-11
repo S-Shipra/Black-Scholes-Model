@@ -53,8 +53,8 @@ export default function TopBar({
           minute:   '2-digit',
           second:   '2-digit',
           hour12:   false,
-          timeZone: 'America/New_York',
-        }) + ' EST',
+          timeZone: 'Asia/Kolkata',
+        }) + ' IST',
       )
     }
     tick()
