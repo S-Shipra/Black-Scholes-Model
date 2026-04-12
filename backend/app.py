@@ -8,12 +8,8 @@ app = FastAPI(title="QuantTrade API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://black-scholes-model-kgwx.vercel.app",
-        "https://black-scholes-model-kgwx-git-main-shipra-singhs-projects.vercel.app",
-        "http://localhost:3000"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
