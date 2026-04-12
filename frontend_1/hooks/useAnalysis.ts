@@ -1,4 +1,3 @@
-console.log('Fetching from:', `${process.env.NEXT_PUBLIC_API_URL}/analyze`)
 import { useState, useEffect, useCallback } from 'react'
 import type { AnalysisResult } from '@/types/analysis'
 
@@ -30,7 +29,7 @@ export function useAnalysis(params: UseAnalysisParams): UseAnalysisReturn {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/analyze`,
+        `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')}/analyze`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -44,33 +43,27 @@ export function useAnalysis(params: UseAnalysisParams): UseAnalysisReturn {
         }
       )
 
-      // ✅ Always parse response
       const json = await res.json()
-
       console.log('API STATUS:', res.status)
       console.log('API RESPONSE:', json)
 
-      // ✅ If backend sent error, handle it
       if (!res.ok) {
         throw new Error(json?.detail || `HTTP ${res.status}`)
       }
 
-      // ✅ Ensure data is actually set
       if (json && Object.keys(json).length > 0) {
         setData(json)
       } else {
         setData(null)
         setError('Empty response from API')
       }
-
     } catch (err: unknown) {
       console.error('FETCH ERROR:', err)
       setError(err instanceof Error ? err.message : 'Unknown error')
-      setData(null) // ✅ ensure consistent state
+      setData(null)
     } finally {
       setLoading(false)
     }
-
   }, [
     params.ticker,
     params.option_type,
