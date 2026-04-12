@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react'
 import ExportButton from './ExportButton'
 import type { AnalysisResult } from '@/types/analysis'
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Props
-// ─────────────────────────────────────────────────────────────────────────────
-
 interface EarningsInfo {
   earnings_date:   string | null
   days_from_today: number | null
@@ -21,17 +17,10 @@ interface Props {
   strike:      number
   expiry:      string
   isLoading:   boolean
-  /** Pass the full analysis result so ExportButton can build the report */
   data?:       AnalysisResult | null
-  /** Pass the earnings info if fetched */
   earnings?:   EarningsInfo | null
-  /** The id of your dashboard wrapper div */
   dashboardId?: string
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Component
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function TopBar({
   ticker,
@@ -43,7 +32,7 @@ export default function TopBar({
   earnings    = null,
   dashboardId = 'qt-dashboard',
 }: Props) {
-  const [time, setTime] = useState('')
+  const [time, setTime] = useState<string | null>(null)
 
   useEffect(() => {
     function tick() {
@@ -178,7 +167,7 @@ export default function TopBar({
           color:         'var(--qt-muted)',
           fontFamily:    'JetBrains Mono, monospace',
           letterSpacing: '0.04em',
-        }}>{time}</span>
+        }}>{time ?? '--:--:-- IST'}</span>
       </div>
 
     </div>
